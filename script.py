@@ -17,7 +17,7 @@ file = open("res.txt", "w")
 for orf in orfs:
     file.write(str(orf))
     file.write("\n")
-    file.write(str(GC(orf)))
+    file.write(str(GC(orf))) #4
     file.write("\n\n")
 
 file.write("\n")
