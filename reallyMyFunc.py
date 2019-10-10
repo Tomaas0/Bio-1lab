@@ -11,6 +11,7 @@ def myFunc(file):
         frame = sequence.seq
         inside = False
         orf = ""
+        #Einame per pirmus tris frame
         for j in range(3):
             for i in range(round(len(frame) / 3)):
                 triplet = frame[(i * 3) + j:(i * 3) + 3 + j]
@@ -27,6 +28,7 @@ def myFunc(file):
         frame = sequence.seq.reverse_complement()
         inside = False
         orf = ""
+        #Einame per kitus tris frame
         for j in range(3):
             for i in range(round(len(frame) / 3)):
                 triplet = frame[(i * 3) + j:(i * 3) + 3 + j]

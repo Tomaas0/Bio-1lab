@@ -1,4 +1,5 @@
 from reallyMyFunc import myFunc
+from Bio.SeqUtils import GC
 from myfunc import make_protein_record
 
 orfs = []
@@ -16,6 +17,8 @@ file = open("res.txt", "w")
 for orf in orfs:
     file.write(str(orf))
     file.write("\n")
+    file.write(str(GC(orf)))
+    file.write("\n\n")
 
 file.write("\n")
     
