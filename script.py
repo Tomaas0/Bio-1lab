@@ -8,7 +8,9 @@ for file in ["plazmide.fasta", "ls_orchid.fasta"]:
     fileOrfs = myFunc(file)
     for orf in fileOrfs:
         orfs.append(orf)
-        proteins.append(make_protein_record(orf))
+        protein = make_protein_record(orf)
+        if len(str(protein.seq)) > 100:
+            proteins.append(protein)
 
 file = open("res.txt", "w")
 for orf in orfs:

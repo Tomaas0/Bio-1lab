@@ -2,8 +2,6 @@ from Bio import SeqIO
 
 def myFunc(file):
 
-    bpLen = 100
-
     startCodon = "ATG"
     stopCodons = ["TAG", "TAA", "TGA"]
 
@@ -13,17 +11,33 @@ def myFunc(file):
         frame = sequence.seq
         inside = False
         orf = ""
-        for i in range(round(len(frame) / 3)):
-            triplet = frame[i * 3:(i * 3) + 3]
-            if inside == True and triplet not in stopCodons:
-                orf += triplet
-            elif inside == True and triplet in stopCodons:
-                orf += triplet
-                if len(orf) > bpLen:
+        for j in range(3):
+            for i in range(round(len(frame) / 3)):
+                triplet = frame[(i * 3) + j:(i * 3) + 3 + j]
+                if inside == True and triplet not in stopCodons:
+                    orf += triplet
+                elif inside == True and triplet in stopCodons:
+                    orf += triplet
                     orfs.append(orf)
-                orf = ""
-                inside = False
-            elif inside == False and triplet == startCodon:
-                inside = True
-                orf += triplet
+                    orf = ""
+                    inside = False
+                elif inside == False and triplet == startCodon:
+                    inside = True
+                    orf += triplet
+        frame = sequence.seq.reverse_complement()
+        inside = False
+        orf = ""
+        for j in range(3):
+            for i in range(round(len(frame) / 3)):
+                triplet = frame[(i * 3) + j:(i * 3) + 3 + j]
+                if inside == True and triplet not in stopCodons:
+                    orf += triplet
+                elif inside == True and triplet in stopCodons:
+                    orf += triplet
+                    orfs.append(orf)
+                    orf = ""
+                    inside = False
+                elif inside == False and triplet == startCodon:
+                    inside = True
+                    orf += triplet
     return orfs
