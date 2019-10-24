@@ -1,4 +1,4 @@
-from reallyMyFunc import myFunc
+from reallyMyFunc import myFuncThatGetsOrfsFromFile
 from Bio.SeqUtils import GC
 from myfunc import make_protein_record
 
@@ -6,7 +6,7 @@ orfs = []
 proteins = []
 
 for file in ["plazmide.fasta", "ls_orchid.fasta"]:
-    fileOrfs = myFunc(file)
+    fileOrfs = myFuncThatGetsOrfsFromFile(file)
     for orf in fileOrfs:
         orfs.append(orf)
         protein = make_protein_record(orf)

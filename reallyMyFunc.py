@@ -24,7 +24,7 @@ def getOrfsFromFrame(frame):
     return orfs
 
 
-def myFunc(file):
+def myFuncThatGetsOrfsFromFile(file):
 
     orfs = []
 
